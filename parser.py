@@ -69,7 +69,6 @@ class AvitoParser:
         price_block = price_block.get_text('\n')
         price_block = list(filter(None, map(lambda i: i.strip(), price_block.split('\n'))))
         price = price_block[0].replace('\u20bd', '')
-        print(price)
 
         date = None
         date_block = item.select_one('div.snippet-date-info')
@@ -118,6 +117,8 @@ class AvitoParser:
             for item in self.result:
                 writer.writerow(item)
 
+        print(f'Запись в файл завершена. Таблица сохранена по пути {path}')
+
     def run(self):
         pages_count = self.get_pagination_limit()
         for i in range(1, pages_count + 1):
@@ -125,7 +126,6 @@ class AvitoParser:
             self.get_blocks(page=i)
         print('Парсинг завершён! Идёт запись в файл...')
         self.save_result()
-        print('Запись в файл завершена')
 
 
 def main():
