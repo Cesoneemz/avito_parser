@@ -31,5 +31,4 @@ python3.8 parser.py --url URL --count COUNT  --all --name FILENAME.csv
 
 ## Лицензия
 
-## License
 [MIT](https://choosealicense.com/licenses/mit/)
